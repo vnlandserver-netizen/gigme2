@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    /* Brand Color Architecture & Proportions (from Design Specs):
+       - 60% Dominant: Cobalt Blue (#3064AE)
+       - 30% Secondary: Crystal Blue (#C5E5EC)
+       - 10% Accent: Ethereal Green (#E0FAEB)
+       - Gradient Strip: 60% Cobalt -> 30% Crystal -> 10% Ethereal
+    */
+    --cobalt-blue: #3064AE;
+    --cobalt-blue-hover: #255294;
+    --cobalt-blue-light: #417AC6;
+    --cobalt-surface: #0E1B2E;
+    --cobalt-card: #13243D;
+    
+    --crystal-blue: #C5E5EC;
+    --crystal-blue-muted: #8FBAC4;
+    --crystal-blue-soft: rgba(197, 229, 236, 0.15);
+    --crystal-border: rgba(197, 229, 236, 0.25);
+    
+    --ethereal-green: #E0FAEB;
+    --ethereal-green-deep: #22C55E;
+    --ethereal-green-soft: rgba(224, 250, 235, 0.15);
+  }
+
+  body {
+    background-color: #0C1728;
+    color: #F1F6FA;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Brand Proportional Utility Classes */
+.bg-cobalt {
+  background-color: #3064AE !important;
+}
+.bg-cobalt-hover:hover {
+  background-color: #255294 !important;
+}
+.text-cobalt {
+  color: #3064AE !important;
+}
+.border-cobalt {
+  border-color: #3064AE !important;
+}
+
+.bg-crystal {
+  background-color: #C5E5EC !important;
+}
+.text-crystal {
+  color: #C5E5EC !important;
+}
+.border-crystal {
+  border-color: rgba(197, 229, 236, 0.3) !important;
+}
+
+.bg-ethereal {
+  background-color: #E0FAEB !important;
+}
+.text-ethereal {
+  color: #E0FAEB !important;
+}
+.border-ethereal {
+  border-color: #E0FAEB !important;
+}
+
+/* Gradient Bars matching user palette ratio (Cobalt 60% -> Crystal 30% -> Ethereal 10%) */
+.bg-brand-tri-gradient {
+  background: linear-gradient(180deg, #3064AE 0%, #3064AE 60%, #C5E5EC 88%, #E0FAEB 100%) !important;
+}
+
+.bg-brand-horiz-gradient {
+  background: linear-gradient(90deg, #3064AE 0%, #3064AE 60%, #C5E5EC 88%, #E0FAEB 100%) !important;
+}
+
+.bg-brand-card {
+  background: linear-gradient(150deg, #13243D 0%, #0E1B2E 100%) !important;
+  border: 1px solid rgba(197, 229, 236, 0.22) !important;
+}
+
+/* Surface and Card Styling aligned with Cobalt & Crystal scheme */
+.bg-\[\#0A0E17\],
+[class*="bg-[#0A0E17]"],
+.bg-\[\#06090F\],
+[class*="bg-[#06090F]"] {
+  background-color: #0C1728 !important;
+  color: #F1F6FA !important;
+}
+
+.bg-\[\#0F172A\],
+[class*="bg-[#0F172A]"],
+.bg-\[\#0A1322\],
+[class*="bg-[#0A1322]"],
+.bg-\[\#0B1322\],
+[class*="bg-[#0B1322]"],
+.bg-\[\#0A0F1A\],
+[class*="bg-[#0A0F1A]"],
+.bg-\[\#111927\],
+[class*="bg-[#111927]"],
+.bg-\[\#111F33\],
+[class*="bg-[#111F33]"],
+.bg-\[\#0E1A2C\],
+[class*="bg-[#0E1A2C]"],
+.bg-\[\#09101C\],
+[class*="bg-[#09101C]"],
+.bg-\[\#101A2C\],
+[class*="bg-[#101A2C]"] {
+  background-color: #12233B !important;
+  color: #F1F6FA !important;
+  border-color: rgba(197, 229, 236, 0.22) !important;
+  box-shadow: 0 4px 20px -2px rgba(48, 100, 174, 0.18), 0 2px 6px -1px rgba(197, 229, 236, 0.08);
+}
+
+.bg-\[\#131E30\],
+[class*="bg-[#131E30]"],
+.bg-\[\#0F1D30\],
+[class*="bg-[#0F1D30]"],
+.bg-\[\#0F1E33\],
+[class*="bg-[#0F1E33]"],
+.bg-\[\#1C2C45\],
+[class*="bg-[#1C2C45]"] {
+  background-color: #0E1B2E !important;
+  color: #F1F6FA !important;
+  border-color: rgba(197, 229, 236, 0.2) !important;
+}
+
+.bg-\[\#1E293B\],
+.bg-slate-900,
+.bg-slate-950,
+[class*="bg-slate-900"],
+[class*="bg-slate-950"] {
+  background-color: #162B48 !important;
+  color: #F1F6FA !important;
+  border-color: rgba(197, 229, 236, 0.25) !important;
+}
+
+/* Header and Navigation in Cobalt & Crystal Brand Palette */
+header {
+  background-color: rgba(14, 27, 46, 0.94) !important;
+  border-bottom: 1px solid rgba(197, 229, 236, 0.2) !important;
+  color: #F1F6FA !important;
+  box-shadow: 0 4px 20px -2px rgba(48, 100, 174, 0.25);
+}
+
+nav {
+  background-color: rgba(14, 27, 46, 0.96) !important;
+  border-top: 1px solid rgba(197, 229, 236, 0.2) !important;
+  color: #F1F6FA !important;
+  box-shadow: 0 -4px 20px -2px rgba(48, 100, 174, 0.2);
+}
+
+/* Inputs and interactive elements */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  background-color: #0E1B2E !important;
+  color: #F1F6FA !important;
+  border-color: rgba(197, 229, 236, 0.25) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: #3064AE !important;
+  box-shadow: 0 0 0 3px rgba(197, 229, 236, 0.25) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8FBAC4 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081022;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a365d;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #141c28;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #00e5ff;
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: sweep 4s linear infinite;
+  transform-origin: center center;
+}
+
+/* Smooth UI animations and transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Micro-animations: tactile button press and click feedback */
+button:active:not(:disabled), a:active, [role="button"]:active {
+  transform: scale(0.965);
+  transition: transform 120ms cubic-bezier(0.2, 0, 0.1, 1);
+}
+
+/* Card hover and interactive drag elevation */
+.card-hover, [data-interactive="true"] {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover, [data-interactive="true"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.08), 0 6px 12px -4px rgba(16, 185, 129, 0.06);
+}
+.card-hover:active, [data-interactive="true"]:active {
+  transform: scale(0.985);
+}
+
+/* Shimmer gradient effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(2,132,199,0.08) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s infinite;
+}
+
+/* Drag indicator pulse */
+@keyframes drag-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-drag-bounce {
+  animation: drag-bounce 1.6s ease-in-out infinite;
+}
+
+button, a, input, select {
+  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
